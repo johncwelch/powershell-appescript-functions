@@ -8,3 +8,8 @@ $listChoice = $results.Split(",")
 for ($i = 0; $i -lt $listChoice.Count; $i++) {
      $listChoice[$i] = $listChoice[$i].Trim()
 }
+
+#for choose application, you just get the application name as a string
+$results = 'choose application with prompt "choose the app" with multiple selections allowed'|/usr/bin/osascript
+
+$results
