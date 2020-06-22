@@ -42,3 +42,16 @@ for ($i = 0; $i -lt $pathList.Count; $i++) {
      $pathList[$i] = $pathList[$i] -replace ":","/"
 }
 $pathList
+
+
+###Choose Folder. Unsurprisingly, about identical to choose file
+$results = 'choose folder with prompt "choose the folder" with multiple selections allowed'|/usr/bin/osascript
+$pathList = $results.Split(",")
+for ($i = 0; $i -lt $pathList.Count; $i++) {
+     $pathlist[$i] = $pathList[$i].Trim()
+     $pathlist[$i] = $pathList[$i].TrimStart("alias ")
+     $temp = $pathList[$i].IndexOf(":")
+     $pathList[$i] = $pathList[$i].Substring($temp)
+     $pathList[$i] = $pathList[$i] -replace ":","/"
+}
+$pathList
