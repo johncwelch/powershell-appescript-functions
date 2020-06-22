@@ -5,7 +5,8 @@ So in lieu of creating gobs of teeny repos, this one is going to be a catchall f
 
 Current items:
 
-choose from list
-choose application
-choose file
-choose folder
+*choose from list  
+*choose application  
+*choose file  
+*choose folder  
+*choose file location  
