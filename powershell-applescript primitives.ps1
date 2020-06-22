@@ -55,3 +55,23 @@ for ($i = 0; $i -lt $pathList.Count; $i++) {
      $pathList[$i] = $pathList[$i] -replace ":","/"
 }
 $pathList
+
+###choose file name, allows you to set up where a file that does not yet exist will go. This gets the location from AppleScript
+#then uses the New-Item command to create that file.
+
+#run the command
+$results = 'choose file name with prompt "choose where you want the new file to go" default name "File.txt" '|/usr/bin/osascript
+
+#convert the HFS-style paths to POSIX
+$fileLocation = $results.Trim()
+$fileLocation = $fileLocation.TrimStart("file ")
+$temp = $fileLocation.IndexOf(":")
+$fileLocation = $fileLocation.Substring($temp)
+$fileLocation = $fileLocation -replace ":","/"
+
+#use New-Item to create our file and maintain a reference to it
+#if the file already exists, you'll be asked by choose file name if you want to replace it
+#if you choose yes there, then New-Item will return an error, so you may want to consider how to deal with that when using this
+#with PowerShell
+$newFile = New-Item -Path $fileLocation -ItemType "file"
+$newFile
